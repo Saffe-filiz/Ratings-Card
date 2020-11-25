@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="rate.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://kit.fontawesome.com/d045cf282c.js" crossorigin="anonymous"></script>
+	<script src="rate.js" defer></script>
+</head>
+    <body>
+	    <section id="app">
+		    <div class="content">
+			    <span class="title">
+				    <h1>Customer reviews</h1>
+			    </span>
+			    <span class="rating"> 
+			        <span v-for="(rate, index) in 5" 
+			        :class="[current_val <  rate ? 'un-active': 'active']">        
+                        <input type="checkbox" :id="index" v-model="value">
+                        <label :for="index" 
+                        @click="sending_rate(rate)"
+                        @mouseover="star_over(rate)" 
+                        @mouseout="star_out"></label>
+                    </span>
+			            <p>{{current_val}} out of 5<p>
+		                <p>{{rates.length}} customer ratings</p>
+			    </span>
+			    <span>      
+			    	<progres-bar :rates="rates"/>
+			    </span>
+		    </div>
+	    </section>
+    </body>
+</html>
